@@ -20,6 +20,7 @@ class WatchListViewController: UIViewController {
         let titleView = UIView(frame: CGRect(x: 0, y: 0,
                                              width: view.width,
                                              height: navigationController?.navigationBar.height ?? 100))
+        
         let label = UILabel(frame: CGRect(x: 10, y: 0, width: titleView.width-20, height: titleView.height))
         label.text = "Stocks"
         label.font = .systemFont(ofSize: 32, weight: .medium)
@@ -29,6 +30,7 @@ class WatchListViewController: UIViewController {
     
     private func setUpSearchController() {
         let resultVC = SearchResultsViewController()
+        resultVC.delegate = self
         let searchVC = UISearchController(searchResultsController: resultVC)
         navigationItem.searchController = searchVC
         searchVC.searchResultsUpdater = self
@@ -39,9 +41,16 @@ class WatchListViewController: UIViewController {
 extension WatchListViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         guard let query = searchController.searchBar.text,
+              let resultVC = searchController.searchResultsController as? SearchResultsViewController,
               !query.trimmingCharacters(in: .whitespaces).isEmpty else {
             return
         }
-        print(query)
+        resultVC.update(with: ["GOOG"])
+    }
+}
+
+extension WatchListViewController: SearchResultsViewControllerDelegate {
+    func SearchResultsViewControllerDidSelect(searchResult: String) {
+        
     }
 }

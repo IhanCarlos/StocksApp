@@ -90,8 +90,8 @@
 		1E8FC31F29E6FC8800374652 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				1E8FC31529E6FC3D00374652 /* LaunchScreen.storyboard */,
 				1E9B002D29F038BA00DD139E /* SearchResultTableViewCell.swift */,
+				1E8FC31529E6FC3D00374652 /* LaunchScreen.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
